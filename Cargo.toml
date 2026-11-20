@@ -1,0 +1,12 @@
+[workspace]
+resolver = "2"
+members = ["crates/hosta-core", "plugin", "xtask", "tools/clap-smoke"]
+
+[profile.release]
+lto = "thin"
+strip = "symbols"
+
+[profile.profiling]
+inherits = "release"
+debug = true
+strip = "none"

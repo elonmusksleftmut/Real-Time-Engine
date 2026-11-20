@@ -1,0 +1,11 @@
+[package]
+name = "clap-smoke"
+version = "0.1.0"
+edition = "2021"
+publish = false
+description = "Minimal CLAP host that loads the built HOSTA.clap and checks pass-through + MIDI CC output"
+
+[dependencies]
+clap-sys = "0.5.0"
+libloading = "0.8"
+hosta-core = { path = "../../crates/hosta-core" }

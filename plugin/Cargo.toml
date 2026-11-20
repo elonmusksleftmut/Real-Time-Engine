@@ -1,0 +1,29 @@
+[package]
+name = "hosta"
+version = "0.1.0"
+edition = "2021"
+description = "HOSTA: higher-order spectral & time-arrow analyzer plugin (VST3 / CLAP)"
+license = "GPL-3.0-or-later"
+
+[lib]
+crate-type = ["cdylib", "lib"]
+
+[[bin]]
+name = "hosta-standalone"
+path = "src/main.rs"
+required-features = ["standalone"]
+
+[features]
+# Panics on any allocation inside process() in debug builds.
+assert_process_allocs = ["nih_plug/assert_process_allocs"]
+# Standalone app (JACK / ALSA / dummy backends): `cargo run -p hosta --features standalone --release`.
+standalone = ["nih_plug/standalone"]
+# Dev only: HOSTA_DEMO_SCENE=0..6 replaces the analysed signal with a built-in test
+# scene (for screenshots/demos without an audio interface). Never in release bundles.
+demo = []
+
+[dependencies]
+hosta-core = { path = "../crates/hosta-core" }
+nih_plug = { git = "https://github.com/robbert-vdh/nih-plug.git", rev = "de421011f41a6d10fc8c7a6084e4f4dee0143683" }
+nih_plug_egui = { git = "https://github.com/robbert-vdh/nih-plug.git", rev = "de421011f41a6d10fc8c7a6084e4f4dee0143683" }
+parking_lot = "0.12"
