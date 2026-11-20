@@ -1,0 +1,8 @@
+[package]
+name = "hosta-core"
+version = "0.1.0"
+edition = "2021"
+description = "Real-time higher-order spectral (bicoherence / tricoherence) and time-arrow analysis engine"
+license = "MIT"
+
+[dependencies]
